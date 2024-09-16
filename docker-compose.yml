@@ -1,0 +1,17 @@
+version: "3"
+services:
+  excel:
+    build: .
+    command: bash -c "npm run build && npm run dev"
+    restart: always
+    container_name: excel
+    volumes:
+      - './vite.config.ts:/app/vite.config.ts'
+    ports:
+      - "5799:5173"
+    networks:
+      - excel
+ 
+networks:
+  excel:
+    driver: bridge
